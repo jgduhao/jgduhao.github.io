@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hao&#39;s blog</title>
+  
+  <subtitle>jgduhao&#39;s blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://jgduhao.github.io/"/>
+  <updated>2019-07-04T11:32:02.136Z</updated>
+  <id>https://jgduhao.github.io/</id>
+  
+  <author>
+    <name>Hao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://jgduhao.github.io/2019/07/04/Hello-World/"/>
+    <id>https://jgduhao.github.io/2019/07/04/Hello-World/</id>
+    <published>2019-07-04T11:32:02.000Z</published>
+    <updated>2019-07-04T11:32:02.136Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
