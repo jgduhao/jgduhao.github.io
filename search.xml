@@ -4,13 +4,19 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2019/07/04/Hello-World/"/>
-      <url>/2019/07/04/Hello-World/</url>
+      <title>helloworld</title>
+      <link href="/2019/07/05/helloworld/"/>
+      <url>/2019/07/05/helloworld/</url>
       
-        <content type="html"><![CDATA[<p>最终决定用GitHubPages了，经过了一点小小的困难终于可以写下第一篇博客。<br>为什么用GitHubPages？大概是能用自己想用的md编辑器而不需要使用网页版，自己较为熟悉github那一套理论，而且比起国内一些社区和博客GitHubPages比较安静，定制度高，也方便。<br>从现在开始就用这个博客记录一点工作上值得记录一下的问题，自己的一些代码块和学习的内容吧。</p>]]></content>
+        <content type="html"><![CDATA[<p>经历了一点微小的困难终于能写第一篇博客了，无内鬼，来点MarkDown语法</p><h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级"><a href="#这是二级" class="headerlink" title="这是二级"></a>这是二级</h2><h3 id="这是三级"><a href="#这是三级" class="headerlink" title="这是三级"></a>这是三级</h3><h4 id="这是四级"><a href="#这是四级" class="headerlink" title="这是四级"></a>这是四级</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line"></span><br><span class="line">## 这是二级</span><br><span class="line"></span><br><span class="line">### 这是三级</span><br><span class="line"></span><br><span class="line">#### 这是四级</span><br></pre></td></tr></table></figure><hr><p>上面是分割线</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line">上面是分割线</span><br></pre></td></tr></table></figure><p>下面是无序列表</p><ul><li>1</li><li>2</li><li>3</li></ul><p>下面是有序列表</p><ol><li>one</li><li>two</li><li>three</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">下面是无序列表</span><br><span class="line">- 1</span><br><span class="line">- 2</span><br><span class="line">- 3</span><br><span class="line"></span><br><span class="line">下面是有序列表</span><br><span class="line">1. one</span><br><span class="line">2. two</span><br><span class="line">3. three</span><br></pre></td></tr></table></figure><blockquote><p>这里是引用</p></blockquote><blockquote><p>这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;这里是引用</span><br><span class="line"></span><br><span class="line">&gt;这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用这就是段落引用</span><br></pre></td></tr></table></figure><p><strong>这是粗体</strong></p><p><em>这是斜体</em></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**这是粗体**</span><br><span class="line"></span><br><span class="line">*这是斜体*</span><br></pre></td></tr></table></figure><p>下面就是代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println &apos;Hello World&apos;;</span><br></pre></td></tr></table></figure><p>够用了，重要的还是内容</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> MarkDown </tag>
+            
+        </tags>
       
     </entry>
     
