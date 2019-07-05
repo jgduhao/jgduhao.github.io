@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives | Hao&#39;s blog</title>
+  <title>Tag: Java | Hao&#39;s blog</title>
   <meta name="description" content="个人技术博客">
   <meta name="keywords" content="java,javascript,groovy">
   <meta name="HandheldFriendly" content="True">
@@ -16,7 +16,7 @@
 <meta name="keywords" content="java,javascript,groovy">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hao&#39;s blog">
-<meta property="og:url" content="https://jgduhao.github.io/archives/index.html">
+<meta property="og:url" content="https://jgduhao.github.io/tags/Java/index.html">
 <meta property="og:site_name" content="Hao&#39;s blog">
 <meta property="og:description" content="个人技术博客">
 <meta property="og:locale" content="zh-CN">
@@ -124,41 +124,57 @@
     <div class='container clearfix'>
       <div class='l_main'>
         
-  <article id="archive-page" class="post article white-box">
-    <section class='meta'>
-      <h2 class="title">
-        <a href="javascript:void(0)">
-          Archives
-        </a>
-      </h2>
-    </section>
-    <section class="archive">
+  <script>
+    window.subData= { title:'Tag : Java'}
+  </script>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2019/07/05/生产问题排查记录（一）/">
+        生产问题排查记录（一）
+      </a>
+    </h2>
+    
+    <time>
+      7月 5, 2019
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/工作记录/">工作记录</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>目前做的是网金方面的外包，因为涉及敏感信息，所以就在不涉及到具体信息的情况下记录一下面对生产问题时，让自己印象比较深刻的一些不成熟排查的思路与解决过程，方便回顾，总结与进步。</p>
+<h3 id="问题描述：客户无法登录，错误提示信息为空"><a href="#问题描述：客户无法登录，错误提示信息为空" class="headerlink" title="问题描述：客户无法登录，错误提示信息为空"></a>问题描述：客户无法登录，错误提示信息为空</h3><h4 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息"></a>背景信息</h4><p>收到客户反馈，无法登录并且弹出了空的错误信息，具体询问客户表示在某个时间点之前可以正常使用，但是那之后就无法使用了。<br>网络大致架构为：<br>服务H（Apache 静态资源服务器） -&gt;  服务G（Weblogic 主要负责会话控制等公共业务） -&gt; 服务S（Weblogic 负责具体业务逻辑）<br>由于服务S负责具体的业务逻辑，所以在服务G上的日志可以很方便的检索与跟踪，服务G上由于主要负责一些简单流程，日志记录格式不好，查找也不怎么方便。而Apache上就只有http请求日志。这就造成了在查找日志跟踪问题时并不是H到G再到S的正常顺序，而是按照日志获取难易程度进行查找的，也就是反过来的S到G再到H，这样做的弊端也就在这次错误排查中显现了。  </p>
+<h4 id="排查过程"><a href="#排查过程" class="headerlink" title="排查过程"></a>排查过程</h4><p>首先找到了客户的登录请求，请求成功到服务S并且成功返回，查看时间戳，也在正常时间内执行完毕，没有超时，看上去一切正常，可是客户的浏览器并未受到这一笔返回报文。接着排查服务G，寻找到服务G上客户的请求信息，也是正常接收请求，在正常的时间内返回，看上去也是一切正常。这时候本应该继续排查服务H，跟踪客户的http请求响应码是否正常，但是由于经验不足，同时http请求量较大，不便排查，而且服务H上没有任何业务逻辑，惯性思维下也就暂时忽略了服务H的排查，事实证明就是这一点导致走了弯路。然后此时就只能推测是客户的网络问题，询问后得知在相同设备上换别的账户可以登录，同时此账户在别的设备别的网络上也无法登录。<br>暂时没有了其他线索，只能再去仔细排查一遍代码。排查之后发现了重要的一点，在登录成功之后服务G向服务S请求了一部分客户数据放入会话，而这一请求可能会导致拖慢请求速度，为了保证性能，服务S提供数据的接口有一个标志位，可以在放弃一部分在某些场景下不需要的数据来提高性能。可是服务S上这个接口的标志位字段在不知道什么时候修改过，<strong>而服务G在请求时的字段居然没有修改！</strong>这就导致了这个标志位失效，所有的请求都会变得较为耗时。回过头去看服务G上的日志，发现这名客户因为其账户原因，正好这一请求较为耗时，但是并未超时。最终还是去排查了服务H，发现<strong>使用的Apache服务器在前几天升级了版本，然而开发人员居然不知情！</strong>而Apache服务器升级的日志就是客户无法正常使用的时间点。排查其配置文件，发现配置的超时时间比之前短了一倍以上，这就导致Apache超时时间短于Weblogic超时时间，而客户的登录请求时间正好比Apache超时时间长了一点，这就导致Weblogic上虽然没超时，Apache上已经判定为超时并返回错误码了，而Apache返回的http错误码在前端代码的ajax请求回调内并未妥善处理，导致了一个意义不明的提示信息。  </p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>现在问题就很简单了，首先把Apache超时时间调整到合适的时间，调整完成后得到客户反馈，问题解决。然后就是修改代码，修复不一致的标志位，去掉不必要的数据请求，降低交易时间，搞定，提交上线申请。  </p>
+<h4 id="反思与总结"><a href="#反思与总结" class="headerlink" title="反思与总结"></a>反思与总结</h4><p>回过头来看下其实是个并不复杂的问题，如果排查顺序正常，就能很快查出问题所在，如果知道Apache服务器最近升级版本，也能很快察觉到问题所在，如果能一直及时维护的接口文档，就能从根源上杜绝这个问题的发生。</p>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
       
-            <div class="archive-item archive-year mark">
-              <a id="archive-year-2019" href='/archives/2019/' >
-                2019
-              </a>
-            </div>
+        <a href="/tags/Java/">Java</a>
       
-          <div class="archive-item archive-post mark">
-            <a href="/2019/07/05/生产问题排查记录（一）/">
-              <time>07-05</time>
-              <span class="title"><span>生产问题排查记录（一）</span></span>
-            </a>
-          </div>
+        <a href="/tags/Apache/">Apache</a>
       
-          <div class="archive-item archive-post mark">
-            <a href="/2019/07/05/helloworld/">
-              <time>07-05</time>
-              <span class="title"><span>helloworld</span></span>
-            </a>
-          </div>
-      
-    </section>
-  </article>
-  <!--
+	  </div>
+    
+  </section>
+</article>
+    </div>
   
-    -->
+</section>
+
 
       </div>
       <aside class='l_side'>
