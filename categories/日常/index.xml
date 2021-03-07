@@ -3,7 +3,14 @@
         <title>日常 - 分类 - Hao&#39;s Blog</title>
         <link>https://jgduhao.github.io/categories/%E6%97%A5%E5%B8%B8/</link>
         <description>日常 - 分类 - Hao&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</lastBuildDate><atom:link href="https://jgduhao.github.io/categories/%E6%97%A5%E5%B8%B8/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Mar 2021 19:12:20 &#43;0800</lastBuildDate><atom:link href="https://jgduhao.github.io/categories/%E6%97%A5%E5%B8%B8/" rel="self" type="application/rss+xml" /><item>
+    <title>好耶</title>
+    <link>https://jgduhao.github.io/posts/%E5%A5%BD%E8%80%B6/</link>
+    <pubDate>Sun, 07 Mar 2021 19:12:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/posts/%E5%A5%BD%E8%80%B6/</guid>
+    <description><![CDATA[好耶 在荒废了一年多之后，终于要重新开始写博客了，博客系统已经迁移到hugo，主题用的是LoveIt，写md从之前的vscode也换成了好用的]]></description>
+</item><item>
     <title>openSUSE Tumbleweed桌面安装要点记录</title>
     <link>https://jgduhao.github.io/posts/opensuse-tumbleweed%E6%A1%8C%E9%9D%A2%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</pubDate>

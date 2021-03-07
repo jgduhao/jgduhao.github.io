@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>hugo - 标签 - Hao&#39;s Blog</title>
+        <link>https://jgduhao.github.io/tags/hugo/</link>
+        <description>hugo - 标签 - Hao&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Mar 2021 19:12:20 &#43;0800</lastBuildDate><atom:link href="https://jgduhao.github.io/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>好耶</title>
+    <link>https://jgduhao.github.io/posts/%E5%A5%BD%E8%80%B6/</link>
+    <pubDate>Sun, 07 Mar 2021 19:12:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/posts/%E5%A5%BD%E8%80%B6/</guid>
+    <description><![CDATA[好耶 在荒废了一年多之后，终于要重新开始写博客了，博客系统已经迁移到hugo，主题用的是LoveIt，写md从之前的vscode也换成了好用的]]></description>
+</item></channel>
+</rss>
