@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/jgduhao.github.io\/posts\/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95%E4%B8%80\/"
-        },"genre": "posts","keywords": "Java, Apache","wordcount":  1439 ,
+        },"genre": "posts","keywords": "Java, Apache","wordcount":  1435 ,
         "url": "https:\/\/jgduhao.github.io\/posts\/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95%E4%B8%80\/","datePublished": "2019-07-05T17:09:54+08:00","dateModified": "2019-07-05T17:09:54+08:00","publisher": {
             "@type": "Organization",
             "name": "jgduhao"},"author": {
@@ -103,7 +103,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">生产问题排查记录（一）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>jgduhao</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw"></i>工作记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-07-05">2019-07-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1439 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-07-05">2019-07-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1435 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -128,7 +128,7 @@
 由于服务S负责具体的业务逻辑，所以在服务G上的日志可以很方便的检索与跟踪，服务G上由于主要负责一些简单流程，日志记录格式不好，查找也不怎么方便。而Apache上就只有http请求日志。这就造成了在查找日志跟踪问题时并不是H到G再到S的正常顺序，而是按照日志获取难易程度进行查找的，也就是反过来的S到G再到H，这样做的弊端也就在这次错误排查中显现了。</p>
 <h4 id="排查过程">排查过程</h4>
 <p>首先找到了客户的登录请求，请求成功到服务S并且成功返回，查看时间戳，也在正常时间内执行完毕，没有超时，看上去一切正常，可是客户的浏览器并未受到这一笔返回报文。接着排查服务G，寻找到服务G上客户的请求信息，也是正常接收请求，在正常的时间内返回，看上去也是一切正常。这时候本应该继续排查服务H，跟踪客户的http请求响应码是否正常，但是由于经验不足，同时http请求量较大，不便排查，而且服务H上没有任何业务逻辑，惯性思维下也就暂时忽略了服务H的排查，事实证明就是这一点导致走了弯路。然后此时就只能推测是客户的网络问题，询问后得知在相同设备上换别的账户可以登录，同时此账户在别的设备别的网络上也无法登录。<br>
-暂时没有了其他线索，只能再去仔细排查一遍代码。排查之后发现了重要的一点，在登录成功之后服务G向服务S请求了一部分客户数据放入会话，而这一请求可能会导致拖慢请求速度，为了保证性能，服务S提供数据的接口有一个标志位，可以在放弃一部分在某些场景下不需要的数据来提高性能。可是服务S上这个接口的标志位字段在不知道什么时候修改过，**而服务G在请求时的字段居然没有修改！<strong>这就导致了这个标志位失效，所有的请求都会变得较为耗时。回过头去看服务G上的日志，发现这名客户因为其账户原因，正好这一请求较为耗时，但是并未超时。最终还是去排查了服务H，发现</strong>使用的Apache服务器在前几天升级了版本，然而开发人员居然不知情！**而Apache服务器升级的日志就是客户无法正常使用的时间点。排查其配置文件，发现配置的超时时间比之前短了一倍以上，这就导致Apache超时时间短于Weblogic超时时间，而客户的登录请求时间正好比Apache超时时间长了一点，这就导致Weblogic上虽然没超时，Apache上已经判定为超时并返回错误码了，而Apache返回的http错误码在前端代码的ajax请求回调内并未妥善处理，导致了一个意义不明的提示信息。</p>
+暂时没有了其他线索，只能再去仔细排查一遍代码。排查之后发现了重要的一点，在登录成功之后服务G向服务S请求了一部分客户数据放入会话，而这一请求可能会导致拖慢请求速度，为了保证性能，服务S提供数据的接口有一个标志位，可以在放弃一部分在某些场景下不需要的数据来提高性能。可是服务S上这个接口的标志位字段在不知道什么时候修改过， <strong>而服务G在请求时的字段居然没有修改！</strong>  这就导致了这个标志位失效，所有的请求都会变得较为耗时。回过头去看服务G上的日志，发现这名客户因为其账户原因，正好这一请求较为耗时，但是并未超时。最终还是去排查了服务H，发现 <strong>使用的Apache服务器在前几天升级了版本，然而开发人员居然不知情！</strong> 而Apache服务器升级的日志就是客户无法正常使用的时间点。排查其配置文件，发现配置的超时时间比之前短了一倍以上，这就导致Apache超时时间短于Weblogic超时时间，而客户的登录请求时间正好比Apache超时时间长了一点，这就导致Weblogic上虽然没超时，Apache上已经判定为超时并返回错误码了，而Apache返回的http错误码在前端代码的ajax请求回调内并未妥善处理，导致了一个意义不明的提示信息。</p>
 <h4 id="解决方案">解决方案</h4>
 <p>现在问题就很简单了，首先把Apache超时时间调整到合适的时间，调整完成后得到客户反馈，问题解决。然后就是修改代码，修复不一致的标志位，去掉不必要的数据请求，降低交易时间，搞定，提交上线申请。</p>
 <h4 id="反思与总结">反思与总结</h4>
