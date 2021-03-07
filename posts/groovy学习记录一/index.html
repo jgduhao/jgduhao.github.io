@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Groovy学习记录（一） - Hao&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Groovy学习记录（一）" />
+<meta property="og:description" content="为什么是Groovy？ 要说Groovy一直都不是多火的东西，同时作为JVM上的语言，完全没有近年来谷歌强推的Kotlin火，但是学语言嘛，最" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jgduhao.github.io/posts/groovy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/" />
+<meta property="article:published_time" content="2019-07-07T16:06:41+08:00" />
+<meta property="article:modified_time" content="2019-07-07T16:06:41+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Groovy学习记录（一）"/>
+<meta name="twitter:description" content="为什么是Groovy？ 要说Groovy一直都不是多火的东西，同时作为JVM上的语言，完全没有近年来谷歌强推的Kotlin火，但是学语言嘛，最"/>
+<meta name="application-name" content="Hao&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Hao&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jgduhao.github.io/posts/groovy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/" /><link rel="prev" href="https://jgduhao.github.io/posts/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95%E4%B8%80/" /><link rel="next" href="https://jgduhao.github.io/posts/manjaro%E7%AC%AC%E4%B8%80%E6%97%A5%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Groovy学习记录（一）",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jgduhao.github.io\/posts\/groovy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80\/"
+        },"genre": "posts","keywords": "Groovy","wordcount":  1962 ,
+        "url": "https:\/\/jgduhao.github.io\/posts\/groovy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80\/","datePublished": "2019-07-07T16:06:41+08:00","dateModified": "2019-07-07T16:06:41+08:00","publisher": {
+            "@type": "Organization",
+            "name": "jgduhao"},"author": {
+                "@type": "Person",
+                "name": "jgduhao"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Hao&#39;s Blog">Hao&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Hao&#39;s Blog">Hao&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Groovy学习记录（一）</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>jgduhao</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw"></i>学习记录</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-07-07">2019-07-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1962 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#为什么是groovy">为什么是Groovy？</a></li>
+        <li><a href="#快速开始">快速开始</a></li>
+        <li><a href="#groovy-in-action">Groovy in Action</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="为什么是groovy">为什么是Groovy？</h3>
+<p>要说Groovy一直都不是多火的东西，同时作为JVM上的语言，完全没有近年来谷歌强推的Kotlin火，但是学语言嘛，最重要的是开心，特别是工作中不是必须要用的语言。平常自己写一些辅助工作的小功能会用Java，像这类东西肯定是脚本语言更加适合，也自己学了一点热门的Python，但毕竟工作中一点都不用，想写个功能还得翻翻文档，而Java工作中常用，api根本不用看直接用，Python的效率优势反而没了，结果工作中常用的Java和JavaScript越来越熟练，Python就荒废了。但不得不说Java在写一些功能的时候是真的不爽，比如集合操作，工作中也写一点JavaScript，比较之下就更加不爽，之后Groovy在偶然的机会下就进入视线，试着用了一下，还真挺有意思，就开始想着认真学一下，要说自己为什么想学Groovy，大概就下面几点：</p>
+<ul>
+<li>脚本语言，直接写直接用</li>
+<li>兼容Java语法，学习曲线平滑</li>
+<li>介绍中看到DSL相关的东西，觉得能拿来做些有意思的东西</li>
+<li>看到有不少用Groovy给Java写单元测试的用法，感觉可以给工作上带来帮助</li>
+</ul>
+<p>而且在网上还看到一个很有意思的说法，Groovy是真正的JavaScript，我也总结了一下：</p>
+<table>
+<thead>
+<tr>
+<th>虚假的JavaScript</th>
+<th>真正的JavaScript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可以在各种浏览器上运行，靠v8引擎和node.js也可以在服务端运行，但就是不能在JVM上运行</td>
+<td>在JVM上运行</td>
+</tr>
+<tr>
+<td>语法与api和Java有相似之处，但也有大量不同的地方</td>
+<td>可以直接写Java代码</td>
+</tr>
+<tr>
+<td>动态语言</td>
+<td>动态语言，但是可以设置静态编译，能屈能伸</td>
+</tr>
+<tr>
+<td>蹭热度的名字，一开始叫LiveScript</td>
+<td>groovy：adj.时髦的; 吸引人的; 有趣的 包含美好的寓意</td>
+</tr>
+</tbody>
+</table>
+<p>当然上面是开玩笑的，不过也体现出了Groovy吸引Java开发人员的地方。</p>
+<h3 id="快速开始">快速开始</h3>
+<p>确实够快，因为做Java开发，肯定是有JDK的，只要再下载一个Groovy 50多M的包，解压之后把bin目录配置进Path变量就行了。
+输入</p>
+<pre><code>groovy -v
+</code></pre><p>展示了Groovy Java和系统版本，安装成功。
+安装好之后就有命令行Groovy Shell和图形界面的Groovy Console可以用，也可以直接文本编辑器写groovy文件，例如：</p>
+<pre><code>print 'Hello World'
+</code></pre><p>然后切换到文件所在目录输入命令</p>
+<pre><code>groovy hello.groovy
+</code></pre><p>运行展示结果。</p>
+<p>初步学习就是看官方文档，先把
+<a href="http://www.groovy-lang.org/differences.html" target="_blank" rel="noopener noreffer">Differences with Java</a>
+和
+<a href="http://www.groovy-lang.org/groovy-dev-kit.html" target="_blank" rel="noopener noreffer">The Groovy Development Kit</a>
+这两篇看个差不多就可以开始写脚本了。
+自己写了两个小东西，主要是处理xml配置文件的，用到了
+<a href="http://www.groovy-lang.org/processing-xml.html" target="_blank" rel="noopener noreffer">Processing XML</a>
+里面介绍的XmlSlurper，用起来很爽，基本上就是</p>
+<pre><code>def list = new XmlSlurper().parseText(text) //解析xml文本
+println list.technology.name //直接取值
+println list.technology.@name //取属性
+list.technology.each { it -&gt;
+    println it.@name //直接遍历
+}
+</code></pre><p>就行了，简单愉快。<br>
+遍历目录：</p>
+<pre><code>//遍历所有文件和文件夹
+new File('/path').eachFileRecurse { file -&gt;                      
+    println file.name
+}
+</code></pre><p>定义集合与遍历集合：</p>
+<pre><code>//列表
+def list = [5, 6, 7, 8]
+list.each {
+    println &quot;Item: $it&quot; 
+}
+//Map
+def map = [name: 'Gromit', likes: 'cheese', id: 1234]
+def map2 = [
+        simple : 123,
+        complex: [a: 1, b: 2]
+]
+map.each { key, value -&gt;
+    println &quot;key: $key val: $value&quot;
+}
+</code></pre><p>舒服了。<br>
+还有个用的比较多的就是GString，Groovy中单引号是普通字符串，双引号是GString，可以直接用类似字符串模板的写法，上面已经出现过了:</p>
+<pre><code>def map = [name: 'Gromit', likes: 'cheese', id: 1234]
+map.each { key, value -&gt;
+    println &quot;key: $key val: ${value.toUpperCase()}&quot;
+}
+</code></pre><p>有了这些其实就已经能提高不少效率了，而且为什么说Groovy学习曲线平滑？因为有的地方如果不太熟悉Groovy的api，可以去翻文档，也可以直接上自己熟悉的Java写法搞定的，效率UP。</p>
+<h3 id="groovy-in-action">Groovy in Action</h3>
+<p>Groovy中文资料还是有点少，Groovy in Action第一版倒是有中文的，但那都是07年的书了，年代有点久远，所以干脆就直接挑战一下Groovy in Action 第二版的英文版，锻炼一下自己阅读英文书籍的能力。目前看完了Part1的第一章和第二章。<br>
+第一章基本就是Groovy大型广告，介绍了Groovy的故事，Groovy的使用场景，快速开始和支持Groovy的IDE与文本编辑器的介绍。<br>
+第二章也是介绍了Groovy的一些基础内容，到没有一上来就讲什么运算符数据类型之类了，而是讲了和Java语法的比较，assert的用法，还有一些GroovyBeans，注解，grapes，GStrings，正则表达式，数字，集合，闭包，流程控制语句大致的介绍，其中有一点就是Groovy中的数字类型也是对象，所以会看到</p>
+<pre><code>1.plus(2)
+</code></pre><p>这种看着怪怪的写法。<br>
+接下来就是Groovy编译器相关的内容。这里说到了有意思的一点，Groovy虽然是动态语言，但是与用解释器逐行解释的动态语言不同，Groovy是经过编译器编译再运行的，但是编译之后又怎么做到动态语言的特性的呢？以调用方法为例子，编译后的文件里不是直接调用的，而是</p>
+<pre><code>getMetaClass().invokeMethod(this, &quot;foo&quot;, EMPTY_PARAMS_ARRAY)
+</code></pre><p>这样通过MetaClass对象进行调用，通过MetaClass对象可以实现动态语言的特性。
+而使用注解</p>
+<pre><code> @CompileStatic
+</code></pre><p>之后编译出来的文件就不去使用MetaClass对象调用方法。</p>
+<p>总之趁着自己还有学习热情的时候多看点吧。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2019-07-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/groovy/">Groovy</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95%E4%B8%80/" class="prev" rel="prev" title="生产问题排查记录（一）"><i class="fas fa-angle-left fa-fw"></i>生产问题排查记录（一）</a>
+            <a href="/posts/manjaro%E7%AC%AC%E4%B8%80%E6%97%A5%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="next" rel="next" title="Manjaro使用第一日总结">Manjaro使用第一日总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

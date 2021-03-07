@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Apache - 标签 - Hao&#39;s Blog</title>
+        <link>https://jgduhao.github.io/tags/apache/</link>
+        <description>Apache - 标签 - Hao&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 05 Jul 2019 17:09:54 &#43;0800</lastBuildDate><atom:link href="https://jgduhao.github.io/tags/apache/" rel="self" type="application/rss+xml" /><item>
+    <title>生产问题排查记录（一）</title>
+    <link>https://jgduhao.github.io/posts/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95%E4%B8%80/</link>
+    <pubDate>Fri, 05 Jul 2019 17:09:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/posts/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95%E4%B8%80/</guid>
+    <description><![CDATA[目前做的是网金方面的外包，因为涉及敏感信息，所以就在不涉及到具体信息的情况下记录一下面对生产问题时，让自己印象比较深刻的一些不成熟排查的思路]]></description>
+</item></channel>
+</rss>

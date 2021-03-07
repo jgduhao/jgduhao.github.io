@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>日常 - 分类 - Hao&#39;s Blog</title>
+        <link>https://jgduhao.github.io/categories/%E6%97%A5%E5%B8%B8/</link>
+        <description>日常 - 分类 - Hao&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</lastBuildDate><atom:link href="https://jgduhao.github.io/categories/%E6%97%A5%E5%B8%B8/" rel="self" type="application/rss+xml" /><item>
+    <title>openSUSE Tumbleweed桌面安装要点记录</title>
+    <link>https://jgduhao.github.io/posts/opensuse-tumbleweed%E6%A1%8C%E9%9D%A2%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</link>
+    <pubDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/posts/opensuse-tumbleweed%E6%A1%8C%E9%9D%A2%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[openSUSE Tumbleweed桌面安装要点记录 进入安装界面 首先在进入安装界面的时候显示器会提示超出范围，这个应该是安装程序检测硬件时有问题，自己的电]]></description>
+</item><item>
+    <title>Manjaro使用第一日总结</title>
+    <link>https://jgduhao.github.io/posts/manjaro%E7%AC%AC%E4%B8%80%E6%97%A5%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Wed, 24 Feb 2021 11:00:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/posts/manjaro%E7%AC%AC%E4%B8%80%E6%97%A5%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[Manjaro使用第一日总结 安装后第一件事 换国内源 sudo pacman-mirrors -i -c China -m rank sudo pacman -Syy sudo pacman -Syu 安装中文输入法 安装fcitx-libpinyin（也可以是sun]]></description>
+</item><item>
+    <title>helloworld</title>
+    <link>https://jgduhao.github.io/posts/helloworld/</link>
+    <pubDate>Fri, 05 Jul 2019 08:26:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/posts/helloworld/</guid>
+    <description><![CDATA[经历了一点微小的困难终于能写第一篇博客了，无内鬼，来点MarkDown语法 这是一级标题 这是二级 这是三级 这是四级 # 这是一级标题 ## 这是二级 ### 这是]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Groovy - 标签 - Hao&#39;s Blog</title>
+        <link>https://jgduhao.github.io/tags/groovy/</link>
+        <description>Groovy - 标签 - Hao&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Jul 2019 16:06:41 &#43;0800</lastBuildDate><atom:link href="https://jgduhao.github.io/tags/groovy/" rel="self" type="application/rss+xml" /><item>
+    <title>Groovy学习记录（一）</title>
+    <link>https://jgduhao.github.io/posts/groovy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/</link>
+    <pubDate>Sun, 07 Jul 2019 16:06:41 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/posts/groovy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/</guid>
+    <description><![CDATA[为什么是Groovy？ 要说Groovy一直都不是多火的东西，同时作为JVM上的语言，完全没有近年来谷歌强推的Kotlin火，但是学语言嘛，最]]></description>
+</item></channel>
+</rss>

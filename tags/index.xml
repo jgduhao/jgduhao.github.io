@@ -1,0 +1,56 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - 标签 - Hao&#39;s Blog</title>
+        <link>https://jgduhao.github.io/tags/</link>
+        <description>Tags - 标签 - Hao&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</lastBuildDate><atom:link href="https://jgduhao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux</title>
+    <link>https://jgduhao.github.io/tags/linux/</link>
+    <pubDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/tags/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>openSUSE</title>
+    <link>https://jgduhao.github.io/tags/opensuse/</link>
+    <pubDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/tags/opensuse/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Manjaro</title>
+    <link>https://jgduhao.github.io/tags/manjaro/</link>
+    <pubDate>Wed, 24 Feb 2021 11:00:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/tags/manjaro/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Groovy</title>
+    <link>https://jgduhao.github.io/tags/groovy/</link>
+    <pubDate>Sun, 07 Jul 2019 16:06:41 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/tags/groovy/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Apache</title>
+    <link>https://jgduhao.github.io/tags/apache/</link>
+    <pubDate>Fri, 05 Jul 2019 17:09:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/tags/apache/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Java</title>
+    <link>https://jgduhao.github.io/tags/java/</link>
+    <pubDate>Fri, 05 Jul 2019 17:09:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/tags/java/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>MarkDown</title>
+    <link>https://jgduhao.github.io/tags/markdown/</link>
+    <pubDate>Fri, 05 Jul 2019 08:26:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://jgduhao.github.io/tags/markdown/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>
