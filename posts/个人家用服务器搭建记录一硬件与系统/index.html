@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>个人家用服务器搭建记录（一）硬件与系统 - Hao&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="个人家用服务器搭建记录（一）硬件与系统" />
+<meta property="og:description" content="个人家用服务器搭建记录（一）硬件与系统 硬件选择 家中有一个闲置的笔记本，想要趁这个机会利用起来，型号为宏碁Aspire E5-551G，处理器A" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jgduhao.github.io/posts/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%B3%BB%E7%BB%9F/" />
+<meta property="article:published_time" content="2021-03-10T20:20:30+08:00" />
+<meta property="article:modified_time" content="2021-03-10T20:20:30+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="个人家用服务器搭建记录（一）硬件与系统"/>
+<meta name="twitter:description" content="个人家用服务器搭建记录（一）硬件与系统 硬件选择 家中有一个闲置的笔记本，想要趁这个机会利用起来，型号为宏碁Aspire E5-551G，处理器A"/>
+<meta name="application-name" content="Hao&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Hao&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jgduhao.github.io/posts/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%B3%BB%E7%BB%9F/" /><link rel="prev" href="https://jgduhao.github.io/posts/%E5%A5%BD%E8%80%B6/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "个人家用服务器搭建记录（一）硬件与系统",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jgduhao.github.io\/posts\/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%B3%BB%E7%BB%9F\/"
+        },"genre": "posts","keywords": "Linux, Ubuntu","wordcount":  1390 ,
+        "url": "https:\/\/jgduhao.github.io\/posts\/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%B3%BB%E7%BB%9F\/","datePublished": "2021-03-10T20:20:30+08:00","dateModified": "2021-03-10T20:20:30+08:00","publisher": {
+            "@type": "Organization",
+            "name": "jgduhao"},"author": {
+                "@type": "Person",
+                "name": "jgduhao"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Hao&#39;s Blog">Hao&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Hao&#39;s Blog">Hao&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">个人家用服务器搭建记录（一）硬件与系统</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>jgduhao</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%97%A5%E5%B8%B8/"><i class="far fa-folder fa-fw"></i>日常</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-10">2021-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1390 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#硬件选择">硬件选择</a></li>
+    <li><a href="#系统选择">系统选择</a></li>
+    <li><a href="#系统与驱动安装">系统与驱动安装</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="个人家用服务器搭建记录一硬件与系统">个人家用服务器搭建记录（一）硬件与系统</h1>
+<h2 id="硬件选择">硬件选择</h2>
+<p>家中有一个闲置的笔记本，想要趁这个机会利用起来，型号为宏碁Aspire E5-551G，处理器AMD A8-7100，4G内存，因为AMD核显的原因实际可用内存3.2G不到，硬盘500G机械。之前在这台电脑上预装的win8.1在机械硬盘和这个性能孱弱的apu上跑的非常吃力，体验十分差。后来还折腾装了win10 ltsc，体验也一般。后来就像干脆就装个Linux，偶尔用下图形界面，大部分时间用来跑服务就行了，反正主力台式机和笔记本都有。这台机器在之前装windows挂下载的时候就显现出来了一个毛病，因为家中的布局，不方便拉网线到我的房间，房子也老，当时也没有墙内的线路，只能用无线网。然而内置的无线网卡不知道是性能实在太差还是天线之类的部件老化了，网络信号很差而且十分不稳定，挂下载速度基本跑不满，而且挂一段时间之后网速就变得特别慢，需要重启电脑才正常。本来是想要更换一个内置无线网卡的，但是考虑到万一是天线或其他部件出问题那不是白忙活，所以最后还是决定配一个usb无线网卡，最终选定了腾达U12，网卡型号为瑞昱的rtl8812AU，这个网卡我之前搜索过有Linux驱动，而且支持USB3.0，造型不夸张，价格也合适，送一根USB延长线，方便把无线网卡部到信号更好的位置。</p>
+<h2 id="系统选择">系统选择</h2>
+<p>之前就在笔记本上装过Windows加Linux的双系统，这次是第一次在实体机上装纯Linux系统，所以决定选择中文资料更多更好找的Ubuntu。本来只用来跑服务装Ubuntu Server就行，但是还是想有个桌面环境以备不时之需。Ubuntu默认的Gnome桌面有些太占资源了，不太适合我的旧笔记本，所以最后选择了xfce桌面的Xubuntu，版本就选择最近的LTS版本，20.04 LTS。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://jgduhao.github.io/images/2021-03-10_201637.png"
+        data-srcset="https://jgduhao.github.io/images/2021-03-10_201637.png, https://jgduhao.github.io/images/2021-03-10_201637.png 1.5x, https://jgduhao.github.io/images/2021-03-10_201637.png 2x"
+        data-sizes="auto"
+        alt="https://jgduhao.github.io/images/2021-03-10_201637.png"
+        title="neofetch截图" /></p>
+<h2 id="系统与驱动安装">系统与驱动安装</h2>
+<p>系统安装也没什么好说的，直接有图形界面，说这方面的文章也很多，而且这个系统已经装好几个月了，细节也记不清了，况且不用装双系统，需要注意的细节也很少。关于装双系统或者多系统的自己现在也算是有一些经验，之后再专门写篇文章详细说说。刚装好系统后首先需要的就是装驱动了，AMD显卡的驱动已经默认装好了，就不用折腾了，唯一需要装的驱动就USB无线网卡rtl8812AU的驱动。关于装这个驱动中间也走了一些弯路。虽然Ubuntu在网络上能搜索到的资料很多，但是也有很多老旧过时的资料混在里面，查找到的一些文章里提及的驱动程序很多都比较老，而且有的原作者已经不维护了，导致我按照教程安装之后没用，不过后来终于在Github找到了一个有用的，就是这个<a href="https://github.com/gordboy/rtl8812au-5.9.3.2" target="_blank" rel="noopener noreffer">rtl8812au-5.9.3.2</a>，根据作者在readme里写的，我在写这篇文章时的版本已经可以在5.4, 5.8, 5.9, 5.10, 5.11的内核下编译成功，在5.4内核下完整的测试过，就我目前使用的情况来看没发现什么问题。readme里也写了用dkms安装驱动的方法，我就直接粘过来了：</p>
+<p>To use dkms install:   (as root, or sudo) copy source folder contents to /usr/src/rtl8812au-5.9.3.2</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo dkms add -m rtl8812au -v 5.9.3.2
+sudo dkms build -m rtl8812au -v 5.9.3.2
+sudo dkms install -m rtl8812au -v 5.9.3.2
+</code></pre></div><p>To use dkms uninstall and remove:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo dkms remove -m rtl8812au -v 5.9.3.2 --all
+</code></pre></div><p>我在我自己的设备上编译安装成功，已经稳定使用了几个月，没出现过什么问题。</p>
+<p>因为有原本的内置无线网卡，现在还需要把内置的无线网卡禁用：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt install net-tools <span class="c1">#安装网络工具</span>
+ifconfig <span class="c1">#查询网卡名称</span>
+ifconfig 网卡名 down
+</code></pre></div><p>这样系统就可以正常使用了。进路由器管理端搞个固定ip，就可以愉快的跑服务了。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-03-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%A5%BD%E8%80%B6/" class="prev" rel="prev" title="好耶"><i class="fas fa-angle-left fa-fw"></i>好耶</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"search":{"algoliaAppID":"EA7PEQHLBW","algoliaIndex":"haosblog","algoliaSearchKey":"21578c958045eb9c15fe9430973ddf9e","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
