@@ -9,6 +9,6 @@
     <pubDate>Sun, 07 Mar 2021 10:26:59 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://jgduhao.github.io/posts/opensuse-tumbleweed%E6%A1%8C%E9%9D%A2%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</guid>
-    <description><![CDATA[openSUSE Tumbleweed桌面安装要点记录 进入安装界面 首先在进入安装界面的时候显示器会提示超出范围，这个应该是安装程序检测硬件时有问题，自己的电]]></description>
+    <description><![CDATA[进入安装界面 首先在进入安装界面的时候显示器会提示超出范围，这个应该是安装程序检测硬件时有问题，自己的电脑是uefi引导，所以在Install]]></description>
 </item></channel>
 </rss>
