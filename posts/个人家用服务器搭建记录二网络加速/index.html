@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>个人家用服务器搭建记录（二）网络加速 - Hao&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="个人家用服务器搭建记录（二）网络加速" />
+<meta property="og:description" content="当在家里要上谷歌查个资料，用snap在Linux上安装个软件，上youtube找个视频教程，下载个安卓sdk的时候就难免要用到网络加速工具。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jgduhao.github.io/posts/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%BA%8C%E7%BD%91%E7%BB%9C%E5%8A%A0%E9%80%9F/" />
+<meta property="article:published_time" content="2021-03-14T14:53:59+08:00" />
+<meta property="article:modified_time" content="2021-03-14T14:53:59+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="个人家用服务器搭建记录（二）网络加速"/>
+<meta name="twitter:description" content="当在家里要上谷歌查个资料，用snap在Linux上安装个软件，上youtube找个视频教程，下载个安卓sdk的时候就难免要用到网络加速工具。"/>
+<meta name="application-name" content="Hao&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Hao&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jgduhao.github.io/posts/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%BA%8C%E7%BD%91%E7%BB%9C%E5%8A%A0%E9%80%9F/" /><link rel="prev" href="https://jgduhao.github.io/posts/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "个人家用服务器搭建记录（二）网络加速",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jgduhao.github.io\/posts\/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%BA%8C%E7%BD%91%E7%BB%9C%E5%8A%A0%E9%80%9F\/"
+        },"genre": "posts","keywords": "Linux, Ubuntu","wordcount":  2280 ,
+        "url": "https:\/\/jgduhao.github.io\/posts\/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%BA%8C%E7%BD%91%E7%BB%9C%E5%8A%A0%E9%80%9F\/","datePublished": "2021-03-14T14:53:59+08:00","dateModified": "2021-03-14T14:53:59+08:00","publisher": {
+            "@type": "Organization",
+            "name": "jgduhao"},"author": {
+                "@type": "Person",
+                "name": "jgduhao"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Hao&#39;s Blog">Hao&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Hao&#39;s Blog">Hao&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">个人家用服务器搭建记录（二）网络加速</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>jgduhao</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%97%A5%E5%B8%B8/"><i class="far fa-folder fa-fw"></i>日常</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-14">2021-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2280 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#涉及软件">涉及软件</a></li>
+    <li><a href="#部署clash">部署Clash</a></li>
+    <li><a href="#使用docker安装subconverter">使用docker安装subconverter</a></li>
+    <li><a href="#在nginx上部署yacd面板">在nginx上部署yacd面板</a></li>
+    <li><a href="#使用加速功能">使用加速功能</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>当在家里要上谷歌查个资料，用snap在Linux上安装个软件，上youtube找个视频教程，下载个安卓sdk的时候就难免要用到网络加速工具。关于网络加速，很多人会使用路由器上的功能或者是直接使用软路由或是旁路由来解决这个问题，但是我这手上没有合适的硬件，而且我也就在家里使用网络的时候才会用到网络加速，没必要专门启动一个二十四小时工作的设备。这一篇就记录下在自己的个人家用服务器上搭建网络加速工具链的方法。</p>
+<h2 id="涉及软件">涉及软件</h2>
+<p>主要涉及的软件有：</p>
+<ol>
+<li>Clash（VMess协议加速，并提供本地HTTP，HTTPS，SOCKS5端口服务）</li>
+<li>subconverter（订阅转换，生成Clash配置文件）</li>
+<li>yacd（Clash的web面板）</li>
+</ol>
+<h2 id="部署clash">部署Clash</h2>
+<p>Clash使用Golang写的，在Ubuntu上启动起来也比较简单。首先在clash的releases中下载clash-linux-amd64的包，在本地用gunzip命令解压后，直接使用./clash就可以启动了。</p>
+<p>在启动的时候会在~/.config/clash生成配置文件夹，里面会有config.yaml和Country.mmdb文件。在第一次启动的时候clash会去下载Country.mmdb文件，但是由于网络原因有失败的可能，如果失败，可以在有网络加速环境的地方自己手动下载<a href="https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb" target="_blank" rel="noopener noreffer">Country.mmdb</a>文件，再手动上传到配置文件目录下。</p>
+<p>如果需要后台启动使用命令nohup ./clash &amp; 就可以后台启动了。但是个人不推荐这样做，还是建议把服务的启动关停交给systemd管理。</p>
+<p>首先在/etc/systemd/system文件夹下新建service文件：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">vim /etc/systemd/system/clash.service
+</code></pre></div><p>service文件的内容：</p>
+<pre><code>Description=clash
+#下面的两条配置表示依赖网络服务
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=hao #用户名
+ExecStart=/home/hao/clash/clash #启动命令
+ExecStop=/bin/kill -s QUIT $MAINPID #停止命令
+Restart=always 
+StandOutput=syslog
+StandError=inherit
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>编辑完成保存后重载systemd并启动服务，下面是可能会用到的命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">systemctl daemon-reload <span class="c1">#重载systemd</span>
+systemctl start clash <span class="c1">#启动</span>
+systemctl stop clash <span class="c1">#关闭</span>
+systemctl <span class="nb">enable</span> clash <span class="c1">#开机启动</span>
+systemctl disable clash <span class="c1">#取消开机启动</span>
+systemctl status clash <span class="c1">#查看状态</span>
+</code></pre></div><p>这样的话就可以把clash交给systemd来管理启动、关闭和开机启动了。</p>
+<p>如果服务提供商提供了clash订阅的配置文件下载地址，那就直接下载文件，覆盖到clash配置文件目录下并重启clash，就可以开始使用了。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">wget <span class="s2">&#34;https://abc.xyz/aabbcc&#34;</span> -O /home/hao/.config/clash/config.yaml
+sudo systemctl restart clash
+</code></pre></div><p>如果服务商没有提供clash的配置文件，那么就需要从其他的订阅链接转换成clash配置文件，那么就要用到下面说的subconverter了。</p>
+<h2 id="使用docker安装subconverter">使用docker安装subconverter</h2>
+<p>docker的安装就不写了，直接参照官方文档 <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener noreffer">Install Docker Engine on Ubuntu</a> 安装即可。</p>
+<p>然后直接把subconverter的docker镜像拖下来</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker pull tindy2013/subconverter
+</code></pre></div><p>按照作者提供的文档 <a href="https://github.com/tindy2013/subconverter/blob/master/README-docker.md" target="_blank" rel="noopener noreffer">subconverter-docker</a> 启动即可</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 运行并且将容器25500端口映射到宿主机25500</span>
+docker run -d --restart<span class="o">=</span>always -p 25500:25500 tindy2013/subconverter:latest
+<span class="c1"># 检查状态</span>
+curl http://localhost:25500/version
+<span class="c1"># 如果显示“subconverter vx.x.x backend”说明已经正常启动</span>
+</code></pre></div><p>订阅转换我是配合<a href="https://github.com/ACL4SSR/ACL4SSR" target="_blank" rel="noopener noreffer">ACL4SSR</a>规则进行转换的，因为需要访问https://raw.githubusercontent.com/，在进行订阅转换的时候也需要加速，为了让订阅更新更加灵活可用，除了这个不走代理的容器，我这边还会启动一个默认走代理的容器。</p>
+<p>关于Docker的加速方式，找到了一篇文章介绍的很详细，<a href="https://www.cnblogs.com/michael9/p/12300824.html" target="_blank" rel="noopener noreffer">Docker 代理脱坑指南</a>，这里就使用Dockerfile的方式。</p>
+<p>先写一个Dockerfile，在原来的镜像的基础上配置全局代理，MY_PROXY_URL的值就是clash的http服务路径</p>
+<div class="highlight"><pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> tindy2013/subconverter:latest</span><span class="err">
+</span><span class="err"></span><span class="k">ENV</span> <span class="nv">MY_PROXY_URL</span><span class="o">=</span><span class="s2">&#34;http://192.168.3.18:7890&#34;</span><span class="err">
+</span><span class="err"></span><span class="k">ENV</span> <span class="nv">HTTP_PROXY</span><span class="o">=</span><span class="nv">$MY_PROXY_URL</span> <span class="se">\
+</span><span class="se"></span>    <span class="nv">HTTPS_PROXY</span><span class="o">=</span><span class="nv">$MY_PROXY_URL</span> <span class="se">\
+</span><span class="se"></span>    <span class="nv">http_proxy</span><span class="o">=</span><span class="nv">$MY_PROXY_URL</span> <span class="se">\
+</span><span class="se"></span>    <span class="nv">https_proxy</span><span class="o">=</span><span class="nv">$MY_PROXY_URL</span><span class="err">
+</span><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 25500</span><span class="err">
+</span></code></pre></div><p>构建镜像</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker build -t subconventer-custom-proxy:latest
+</code></pre></div><p>之后再用这个镜像启动一个容器，并分配一个别的端口，我这里映射到了25501上</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d --restart<span class="o">=</span>always -p 25501:25500 subconventer-custom-proxy:latest
+</code></pre></div><p>关于获取转换订阅的连接，虽然可以啃subconventer的文档，但是也有现成的获取订阅转换的连接的工具sub-web，ACL4SSR的订阅转换网址 <a href="https://acl4ssr.netlify.app/" target="_blank" rel="noopener noreffer">acl4ssr.netlify.app</a> 因为生成一次链接可以一直使用，使用频率很低，所以我就懒得在本地部署了。之后直接用获取的定制订阅链接访问subconventer服务，就可以获得转换过可以直接使用的clash配置文件了。</p>
+<h2 id="在nginx上部署yacd面板">在nginx上部署yacd面板</h2>
+<p>为了方便切换节点之类的操作，在本地部署了一个yacd面板。可以直接部署的yacd静态页面包在yacd的github页面上的readme里有提供： <a href="https://github.com/haishanh/yacd/archive/gh-pages.zip" target="_blank" rel="noopener noreffer">zip of the gh-pages</a></p>
+<p>直接打开文件夹，打开index.html，设置好clash的管理api端口地址就能用了，但是为了方便在手机和其他设备上使用，我把这些文件部署到了nginx上。</p>
+<p>nginx直接安装就行</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apt install nginx
+</code></pre></div><p>然后把之前获取的yacd静态页面的文件夹移动到一个固定的目录下比如mysite，然后为nginx添加一个配置文件mysite</p>
+<pre><code>server {
+        listen 81;
+        server_name 192.168.3.18;
+        location /yacd {
+                root /home/hao/mysite/;
+                index index.html;
+        }
+}
+</code></pre><p>保存之后重启nginx服务，访问http://192.168.3.18:81/yacd即可访问，具体的地址，端口和文件目录需要按照实际情况配置。</p>
+<h2 id="使用加速功能">使用加速功能</h2>
+<p>要使用加速功能其实就是把流量转发到clash提供的http或socks5端口上去，浏览器上的插件SwitchyOmega，安卓手机上的BifrostV，ios上大名鼎鼎的小飞机，都可以设置把流量转发到socks5端口上。在系统的代理设置里也可以手动设置，从而达到全局代理的目的。很多软件也有代理设置的地方，这样就不需要全局代理，仅在个别软件上加速。windows上的SStap和Linux上经过设置的iptables甚至可以转发udp流量。</p>
+<p>这样的话整个用于网络加速的工具链就搭建好了。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-03-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E4%B8%AA%E4%BA%BA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%B3%BB%E7%BB%9F/" class="prev" rel="prev" title="个人家用服务器搭建记录（一）硬件与系统"><i class="fas fa-angle-left fa-fw"></i>个人家用服务器搭建记录（一）硬件与系统</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"search":{"algoliaAppID":"EA7PEQHLBW","algoliaIndex":"haosblog","algoliaSearchKey":"21578c958045eb9c15fe9430973ddf9e","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
